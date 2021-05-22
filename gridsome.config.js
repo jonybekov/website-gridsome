@@ -5,7 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: "Gridsome",
+  siteName: "Azizbek Jonibekov",
   templates: {
     ContentfulBlog: "/blog/:slug",
   },
@@ -20,5 +20,11 @@ module.exports = {
         typeName: "Contentful",
       },
     },
+    {
+      use: "gridsome-plugin-windicss",
+    },
+    // {
+    //   use: "gridsome-plugin-tailwindcss",
+    // },
   ],
 };

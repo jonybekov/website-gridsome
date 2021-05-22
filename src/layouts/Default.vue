@@ -1,16 +1,30 @@
 <template>
-  <div class="layout">
-    <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="nav">
-        <g-link class="nav__link" to="/">Home</g-link>
-        <g-link class="nav__link" to="/about/">About</g-link>
-        <g-link to="/blog">Blog</g-link>
-      </nav>
+  <div>
+    <header class=" bg-indigo-600 xl:px-100 py-10">
+      <div class="container mx-auto flex justify-between">
+        <!-- <g-link to="/">{{ $static.metadata.siteName }}</g-link> -->
+        <g-link class="text-lg text-white font-normal" to="/">
+          Azizbek Jonibekov
+        </g-link>
+
+        <nav class="nav">
+          <g-link
+            v-for="{ text, to } in navItems"
+            :key="to"
+            class="rounded-sm transition-all py-2 px-3 mr-2 hover:bg-indigo-700 text-white"
+            active-class="bg-indigo-800 hover:bg-indigo-800"
+            :to="to"
+            >{{ text }}</g-link
+          >
+        </nav>
+      </div>
     </header>
-    <slot />
+    <main class="bg-gray-100 py-20" :class="{ 'pt-0': noMainPadding }">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- </main> -->
   </div>
 </template>
 
@@ -22,31 +36,60 @@ query {
 }
 </static-query>
 
+<script>
+import Footer from "../components/Footer.vue";
+export default {
+  props: {
+    noMainPadding: Boolean,
+  },
+  components: { Footer },
+  data() {
+    return {
+      navItems: [
+        {
+          to: "/blog/",
+          text: "Blog",
+        },
+        {
+          to: "/about/",
+          text: "Men haqimda",
+        },
+        {
+          to: "/uses/",
+          text: "Ish qurollarim",
+        },
+      ],
+    };
+  },
+};
+</script>
+
 <style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: "Inter", "Helvetica";
   margin: 0;
   padding: 0;
   line-height: 1.5;
+  caret-color: black;
 }
 
-.layout {
-  max-width: 760px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+p {
+  @apply text-lg text-gray-800 leading-8;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
+a {
+  @apply text-indigo-600;
 }
 
-.nav__link {
-  margin-left: 20px;
+a:hover {
+  /* @apply text-indigo-700; */
+}
+
+input {
+  color: black;
 }
 </style>

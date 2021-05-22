@@ -1,29 +1,33 @@
 <template>
   <Layout>
-    <section v-if="$page">
-      <ul>
-        <li v-for="{ node } in $page.posts.edges" :key="node.id">
-          <h2>
-            <g-link :to="node.path">{{ node.title }}</g-link>
-          </h2>
-          <div>
-            <span>{{ node.date }}</span>
-            <span> &middot; </span>
-            <!-- <span>{{ node.timeToRead }} min read</span> -->
-          </div>
-          <div>
-            {{ node.excerpt }}
-          </div>
-          <div>
-            <g-link :to="node.path">Read More</g-link>
-          </div>
-        </li>
-      </ul>
-      <pager
-        v-if="$page.posts.pageInfo.totalPages > 1"
-        :info="$page.posts.pageInfo"
-      />
-    </section>
+    <Container>
+      <section v-if="$page">
+        <ul>
+          <li v-for="{ node } in $page.posts.edges" :key="node.id">
+            <h2 class="text-xl mb-2 font-semibold">
+              <g-link :to="node.path">{{ node.title }}</g-link>
+            </h2>
+            <div class="mb-2">
+              <span class="text-gray-500">{{
+                $dayjs(node.date).format("DD-MMMM YYYY")
+              }}</span>
+              <span> &middot; </span>
+              <!-- <span>{{ node.timeToRead }} min read</span> -->
+            </div>
+            <div>
+              {{ node.excerpt }}
+            </div>
+            <div class="text-indigo-600 font-semibold">
+              <g-link :to="node.path">Batafsil -></g-link>
+            </div>
+          </li>
+        </ul>
+        <pager
+          v-if="$page.posts.pageInfo.totalPages > 1"
+          :info="$page.posts.pageInfo"
+        />
+      </section>
+    </Container>
   </Layout>
 </template>
 

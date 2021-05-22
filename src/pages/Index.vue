@@ -1,29 +1,74 @@
 <template>
-  <Layout>
-
+  <Layout no-main-padding>
+    <hero />
     <!-- Learn how to use images here: https://gridsome.org/docs/images -->
-    <g-image alt="Example image" src="~/favicon.png" width="135" />
 
-    <h1>Hello, world!</h1>
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur excepturi labore tempore expedita, et iste tenetur suscipit explicabo! Dolores, aperiam non officia eos quod asperiores
-    </p>
-
-    <p class="home-links">
-      <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">Gridsome Docs</a>
-      <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
-    </p>
-
+    <Container>
+      <div class="transform -translate-y-6 rounded-md bg-white p-8">
+        <h1 class="text-2xl font-medium mb-6 text-gray-800">
+          So'ngi maqolalar
+        </h1>
+        <ul>
+          <li v-for="{ node } in $page.posts.edges" :key="node.id">
+            <h2 class="text-2xl mb-2 font-semibold">
+              <g-link class="text-gray-800" :to="node.path">{{
+                node.title
+              }}</g-link>
+            </h2>
+            <div class="mb-2">
+              <span class="text-gray-500">{{
+                $dayjs(node.date).format("DD-MMMM YYYY")
+              }}</span>
+              <span> &middot; </span>
+              <!-- <span>{{ node.timeToRead }} min read</span> -->
+            </div>
+            <div>
+              {{ node.excerpt }}
+            </div>
+            <div class="text-indigo-600 font-semibold">
+              <g-link :to="node.path">Batafsil -></g-link>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </Container>
   </Layout>
 </template>
 
-<script>
-export default {
-  metaInfo: {
-    title: 'Hello, world!'
+<page-query>
+query Posts {
+  posts: allContentfulBlog {
+		pageInfo{
+      totalPages
+      currentPage
+      hasNextPage
+      hasPreviousPage
+    }
+    edges {
+      
+      node {
+        id
+        title
+        date
+        path
+      }
+    }
   }
 }
+</page-query>
+
+<script>
+// import * as dayjs from "dayjs";
+
+import Hero from "../components/Hero.vue";
+export default {
+  components: { Hero },
+  metaInfo: {
+    title: "Hello, world!",
+  },
+  computed: {},
+  methods: {},
+};
 </script>
 
 <style>

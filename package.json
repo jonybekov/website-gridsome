@@ -9,10 +9,12 @@
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^14.1.2",
     "@contentful/rich-text-types": "^14.1.2",
+    "@gridsome/remark-prismjs": "^0.5.0",
     "@gridsome/source-contentful": "^0.6.0",
     "dayjs": "^1.10.4",
     "gridsome": "^0.7.0",
-    "markdown-it": "^12.0.6"
+    "markdown-it": "^12.0.6",
+    "prismjs": "^1.23.0"
   },
   "devDependencies": {
     "autoprefixer": "9",
@@ -23,6 +25,7 @@
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^6.7.0",
     "sass-loader": "10.1.1",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "vue-prism": "^1.0.5"
   }
 }

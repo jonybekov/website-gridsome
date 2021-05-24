@@ -3,7 +3,7 @@
     <Container class="pt-8">
       <article>
         <header class="mb-8">
-          <h1 class="text-6xl mb-6 font-medium">
+          <h1 class="text-5xl mb-6 font-medium">
             {{ $page.post.title }}
           </h1>
           <span class="text-gray-500 ">{{
@@ -48,10 +48,11 @@ query Post($path: String!) {
 </page-query>
 
 <script>
-import MarkdownIt from "markdown-it";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import PictureContainer from "../components/PictureContainer.vue";
 import { BLOCKS, MARKS } from "@contentful/rich-text-types";
+
+import "../styles/prism-one-dark.css";
 
 export default {
   components: { PictureContainer },
@@ -65,7 +66,14 @@ export default {
     return {
       options: {
         renderMark: {
-          [MARKS.CODE]: (text) => `<div class="custom-code">${text}</div>`,
+          [MARKS.CODE]: (text) => {
+            const regex = /\;/g;
+
+            if (regex.test(text)) {
+              return `<pre><code class="language-js">${text}</code></pre>`;
+            }
+            return `<code class="language-text">${text}</code>`;
+          },
         },
       },
     };
@@ -95,5 +103,13 @@ export default {
 <style>
 .content p {
   margin-bottom: 1.55rem;
+}
+
+.content h2 {
+  @apply text-3xl font-bold mb-4;
+}
+
+.language-text {
+  @apply text-gray-800 bg-gray-200;
 }
 </style>

@@ -19,7 +19,7 @@
         </nav>
       </div>
     </header>
-    <main class="bg-gray-100 py-20" :class="{ 'pt-0': noMainPadding }">
+    <main class="bg-gray-100 py-6" :class="{ 'pt-0': noMainPadding }">
       <slot />
     </main>
     <Footer />

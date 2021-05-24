@@ -9,7 +9,7 @@
           So'ngi maqolalar
         </h1>
         <ul>
-          <li v-for="{ node } in $page.posts.edges" :key="node.id">
+          <li v-for="{ node } in $page.posts.edges" class="mb-8" :key="node.id">
             <h2 class="text-2xl mb-2 font-semibold">
               <g-link class="text-gray-800" :to="node.path">{{
                 node.title

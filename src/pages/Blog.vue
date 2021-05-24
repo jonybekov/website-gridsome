@@ -1,6 +1,7 @@
 <template>
   <Layout>
     <Container>
+      <h2 class="text-4xl font-bold mb-8">Raqamli bog'</h2>
       <section v-if="$page">
         <ul>
           <li v-for="{ node } in $page.posts.edges" :key="node.id">

@@ -3,6 +3,7 @@
 
 import DefaultLayout from "~/layouts/Default.vue";
 import Container from "~/components/Container";
+import VuePrism from "vue-prism";
 import * as dayjs from "dayjs";
 require("dayjs/locale/uz-latn");
 
@@ -22,5 +23,6 @@ export default function(Vue, { router, head, isClient }) {
   // Set default layout as a global component
   Vue.component("Layout", DefaultLayout);
   Vue.component("Container", Container);
+  Vue.use(VuePrism);
   Vue.prototype.$dayjs = dayjs;
 }

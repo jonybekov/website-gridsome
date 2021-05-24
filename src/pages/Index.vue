@@ -4,7 +4,9 @@
     <!-- Learn how to use images here: https://gridsome.org/docs/images -->
 
     <Container>
-      <div class="transform -translate-y-6 rounded-md bg-white p-8">
+      <div
+        class="sm:transform -translate-y-6 rounded-md bg-white py-6 p-4 sm:p-8"
+      >
         <h1 class="text-2xl font-medium mb-6 text-gray-800">
           So'ngi maqolalar
         </h1>
@@ -25,7 +27,7 @@
             <div>
               {{ node.excerpt }}
             </div>
-            <div class="text-indigo-600 font-semibold">
+            <div class="text-indigo-600 text-lg sm:text-md sm:font-semibold">
               <g-link :to="node.path">Batafsil -></g-link>
             </div>
           </li>

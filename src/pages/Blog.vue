@@ -4,9 +4,11 @@
       <h2 class="text-4xl font-bold mb-8">Raqamli bog'</h2>
       <section v-if="$page">
         <ul>
-          <li v-for="{ node } in $page.posts.edges" :key="node.id">
+          <li v-for="{ node } in $page.posts.edges" class="mb-8" :key="node.id">
             <h2 class="text-xl mb-2 font-semibold">
-              <g-link :to="node.path">{{ node.title }}</g-link>
+              <g-link class="text-gray-800" :to="node.path">{{
+                node.title
+              }}</g-link>
             </h2>
             <div class="mb-2">
               <span class="text-gray-500">{{

@@ -1,9 +1,9 @@
 <template>
   <Layout>
-    <Container class="pt-8">
+    <Container>
       <article>
         <header class="mb-8">
-          <h1 class="text-5xl mb-6 font-medium">
+          <h1 class="text-3xl sm:text-5xl mb-6 font-medium">
             {{ $page.post.title }}
           </h1>
           <span class="text-gray-500 ">{{
@@ -106,7 +106,7 @@ export default {
 }
 
 .content h2 {
-  @apply text-3xl font-bold mb-4;
+  @apply text-2xl sm:text-3xl font-bold mb-4;
 }
 
 .language-text {
